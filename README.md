@@ -1,74 +1,89 @@
-# AI-Projects
-TP 1 : logique propositionnelle et model checking
-Information	Valeur
-Auteur	Sylvain Lagrue (sylvain.lagrue@utc.fr)
-Licence	Creative Common CC BY-SA 3.0
-Version document	2.4.0
-Exercice : génération automatique de tables de vérités
-On souhaite créer un programme qui, étant donné une formule donnée en argument et un ensemble de variables propositionnelles affiche sa table de vérité. On se limitera aux connecteurs ∧ (and), ∨ (or) et ¬ (not). On utilisera pour cela Python 3.6 (ou supérieur).
+IA02 – Intelligence Artificielle : Travaux Pratiques
+📌 Présentation
 
-Exemple de sortie possible
+Ce dépôt contient l’ensemble des travaux pratiques réalisés dans le cadre de l’UE IA02 – Intelligence Artificielle à l’UTC (Université de Technologie de Compiègne).
+L’objectif de ces TPs est d’explorer différents aspects de l’IA symbolique, de la logique propositionnelle aux algorithmes de recherche et à la programmation logique.
 
-> table("(A or B) and not(C)", ["A", "B", "C"])
-formule : (A or B) and not(C)
-+---+---+---+-------+
-| A | B | C | eval. |
-+---+---+---+-------+
-| F | F | F |   F   |
-| T | F | F |   T   |
-| F | T | F |   T   |
-| T | T | F |   T   |
-| F | F | T |   F   |
-| T | F | T |   F   |
-| F | T | T |   F   |
-| T | T | T |   F   |
-+---+---+---+-------+
+📂 Contenu du dépôt
+TP1 – Logique propositionnelle et model checking
 
+Langage : Python 3
 
-Question 1
-Écrire une fonction decomp(n: int, nb_bits: int) -> List[bool] qui, étant donné un nombre n, calcule la décomposition binaire en nb_bits de n. L’ordre des bits (croissant ou décroissant) est sans importance.
+Objectifs :
 
-Exemple
-> decomp(3, 4)
-[True, True, False, False]
-Question 2
-Une interprétation peut être vue comme un dictionnaire qui associe à chaque variable propositionnelle la valeur True ou la valeur False.
+Génération automatique de tables de vérité
 
-Créer une fonction interpretation(voc: List[str], vals: List[bool]) -> Dict[str, bool] qui, étant donné un tableau de chaîne de caractère représentant les variables propositionnelles et un liste de valeurs prises par ces variables renvoie une interprétation.
+Évaluation de formules logiques
 
-Exemple
-> interpretation(["A", "B", "C"],[True, True, False])
-{"A": True, "B": True, "C": False}
-Question 3
-Créer un générateur d’interprétations gen_interpretations(voc: List[str]) -> Generator[Dict[str, bool], None, None] qui, étant donné la liste des variables booléennes, génère une à une les interprétations.
+Vérification de validité, contradiction, contingence
 
-Exemple
-> g = gen_interpretations(["A", "B", "C"])
-> print(next(g))
-{"A": False, "B": False, "C": False}
-> print(next(g))
-{"A": True, "B": False, "C": False}
+Détermination de conséquence logique entre formules
 
-> for i in gen_interpretations(["toto", "tutu"]):
->     print(i)
-{'toto': False, 'tutu': False}
-{'toto': True, 'tutu': False}
-{'toto': False, 'tutu': True}
-{'toto': True, 'tutu': True}
-Question 4
-Créer une fonction valuate(formula: str, interpretation: Dict[str, bool]) -> bool:prenant en entrée une chaîne de caractères représentant la formule à évaluer et une interprétation et qui renvoie True ou False. On utilisera pour cela exceptionnellement la fonction eval.
+Compétences mises en œuvre :
 
-Exemple
-> valuate("(A or B) and not(C)", {"A": True, "B": False, "C": False})
-True
-Question 5
-Écrire une fonction permettant d’afficher la table de vérité étant donné une formule propositionnelle et le vocabulaire afférent.
+Manipulation de structures booléennes
 
-Question 6
-Écrire 3 fonctions différentes permettant respectivement de savoir si une formule est valide, contradictoire ou contingente. Tester ces fonctions sur des formules comprenant 1, 2, 3, 5, 10, 15, 20, 25, 30, 50 et 100 variables. Qu’en déduire ?
+Générateurs Python et compréhension de dictionnaires
 
-Question 7
-Écrire une fonction is_cons(f1: str, f2: str, voc: List[str]) -> bool qui renvoie True si la formule f2 est la conséquence logique de la formule f1, False sinon.
+Évaluation dynamique de code (eval)
 
-------------------------------------------------------------------------------------
+TP2 – Solveurs SAT et modélisation de problèmes
+
+Langage : Python 3 + solveur Gophersat
+
+Objectifs :
+
+Compréhension du format DIMACS
+
+Utilisation d’un solveur SAT pour résoudre des problèmes logiques
+
+Modélisation de la “licorne” et d’un problème de coloration de graphe
+
+Compétences mises en œuvre :
+
+Encodage de problèmes en CNF
+
+Appel de programmes externes en Python (subprocess)
+
+Analyse et interprétation des solutions SAT
+
+TP4 – Tic-Tac-Toe avec algorithme MinMax
+
+Langage : Python 3
+
+Objectifs :
+
+Implémentation des règles du jeu (grille, coups légaux, conditions de victoire)
+
+Création d’agents : humain, aléatoire, heuristique
+
+Implémentation de MinMax, MinMax aléatoire, α-β pruning
+
+Compétences mises en œuvre :
+
+Programmation fonctionnelle en Python
+
+Conception d’IA pour jeux à deux joueurs
+
+Optimisation d’algorithmes de recherche
+
+TP5 – Mastermind en Prolog
+
+Langage : Prolog
+
+Objectifs :
+
+Codage des règles du jeu Mastermind
+
+Calcul des couleurs bien/mal placées
+
+Génération de codes aléatoires et interaction avec l’utilisateur
+
+Compétences mises en œuvre :
+
+Programmation logique (Prolog)
+
+Manipulation de listes et prédicats
+
+Gestion d’un jeu interactif via console
 
